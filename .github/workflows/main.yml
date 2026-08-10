@@ -43,6 +43,7 @@ jobs:
         with:
           name: skim_ggH.root
           path: skim_ggH.root         
+  
   plot:
     needs: skim
     runs-on: ubuntu-latest
@@ -53,5 +54,9 @@ jobs:
           name: skim_ggH.root
       - name: run
         run: python3 histograms.py skim_ggH.root ggH hist_ggH.root
+      - uses: actions/upload-artifact@v7
+        with:
+          name: hist_ggH.root
+          path: hist_ggH.root     
 
 
