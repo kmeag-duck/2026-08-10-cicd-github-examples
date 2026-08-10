@@ -63,4 +63,15 @@ jobs:
           name: hist_ggH.root
           path: hist_ggH.root     
 
+  test:
+    runs-on: ubuntu-latest
+    container: rootproject/root:6.32.04-ubuntu24.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
 
+      - name: install pytest
+        run: apt-get update && apt-get install -y python3-pytest
+
+      - name: run tests
+        run: pytest -v
